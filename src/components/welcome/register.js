@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, FormGroup, Button } from 'reactstrap';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
 import { register } from '../auth/userManager';
+import { Alert } from 'reactstrap';
 
 export default class Register extends Component {
     state = {
@@ -34,6 +35,9 @@ export default class Register extends Component {
                     <Button color="primary" onClick={() => { this.props.toggle(); this.submit() }}>Register</Button>{' '}
                     <Button color="secondary" onClick={() => { this.props.toggle() }}>Cancel</Button>
                 </ModalFooter>
+                {/* <Alert >
+                    Already registered?
+                </Alert> */}
             </Modal>
         )
     }

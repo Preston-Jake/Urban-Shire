@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Welcome from "./welcome/Welcome"
 import { getUserFromLocalStorage, logout } from './auth/userManager';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import EmissionsForm from './emissions/EmissionForm';
 
 export default class AppView extends Component {
     state = {
@@ -25,8 +27,10 @@ export default class AppView extends Component {
 
     render() {
         return (
-
-            <Welcome toggle={this.toggle} modal={this.state.modal} {...this.props} onRegister={(user) => this.setState({ user: user })} onLogin={(user) => this.setState({ user: user })} />
+            <Router>
+                <Route exact path="/welcome" render={(props) => <Welcome toggle={this.toggle} modal={this.state.modal} {...this.props} onRegister={(user) => this.setState({ user: user })} onLogin={(user) => this.setState({ user: user })} />} />
+                <Route exact path="/emissions/form" render={(props) => <EmissionsForm />} />
+            </Router>
         )
     }
 }

@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import * as firebase from 'firebase/app';
 import AppView from './components/AppViews';
 
+
 var firebaseConfig = {
     apiKey: "AIzaSyBB-PmM9eSANpqCYYPZnpZa18ciuzZlo7A",
     authDomain: "urbanshire-23e88.firebaseapp.com",
