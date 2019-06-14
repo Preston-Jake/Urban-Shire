@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, FormGroup, Button } from 'reactstrap';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
 import { register } from '../auth/userManager';
-import { Alert } from 'reactstrap';
+
 
 export default class Register extends Component {
     state = {
