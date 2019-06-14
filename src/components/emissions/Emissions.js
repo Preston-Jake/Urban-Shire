@@ -8,7 +8,33 @@ import {
 
 export default class Emissions extends Component {
     state = {
-        totalEmissions: 0
+        totalEmissions: 0,
+        form: {
+            aluminum: false,
+            electricity: 0,
+            fuelOil: 0,
+            glass: false,
+            id: 0,
+            magazines: false,
+            naturalGas: 0,
+            newspaper: false,
+            numOfPeople: 0,
+            numOfVehicles: 0,
+            plastic: false,
+            propane: 0,
+            userId: "",
+            vehicle_0_miles: 0,
+            vehicle_0_mpg: 0,
+            vehicle_1_miles: 0,
+            vehicle_1_mpg: 0,
+            vehicle_2_miles: 0,
+            vehicle_2_mpg: 0,
+            vehicle_3_miles: 0,
+            vehicle_3_mpg: 0,
+            vehicle_4_miles: 0,
+            vehicle_4_mpg: 0
+        }
+
     }
     homeEmissions = (e) => {
         const naturalGas = e[0].naturalGas * 11.2 * 12
@@ -59,27 +85,32 @@ export default class Emissions extends Component {
     }
     componentDidMount = () => {
         dbCalls.getUserEmissions(this.props.user.id).then(e => {
+            console.log(e)
             let totalEmissions = 0
             totalEmissions += this.homeEmissions(e)
             totalEmissions += this.vehicleEmissions(e)
             totalEmissions += this.wasteEmissions(e)
-            this.setState({ totalEmissions: Math.round(totalEmissions) })
+            this.setState({
+                totalEmissions: Math.round(totalEmissions),
+                form: e[0]
+            })
+
         })
     }
 
     render() {
+        console.log(this.state.form.naturalGas)
+
         return (
             <div>
                 <h1>Annual CO<sub>2</sub> Emissions: {this.state.totalEmissions} lbs </h1>
                 <Card>
-                    <CardHeader tag="h3">Emissions Form</CardHeader>
+                    <CardHeader tag="h3">Home</CardHeader>
                     <CardBody>
-                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                        <CardText>Natural Gas: ${this.state.form.naturalGas} ({this.state.form.naturalGas * 11.2}lbs CO<sub>2</sub> per month)</CardText>
+                        <CardText>Natural Gas: ${this.state.form.electricity} ({this.state.form.electricity * 11.75}lbs CO<sub>2</sub> per month)</CardText>
+                        <CardText>Natural Gas: ${this.state.form.fuelOil} ({this.state.form.fuelOil * 5.6}lbs CO<sub>2</sub> per month)</CardText>
+                        <CardText>Natural Gas: ${this.state.form.propane} ({this.state.form.propane * 5}lbs CO<sub>2</sub> per month)</CardText>
                     </CardBody>
                 </Card>
             </div>

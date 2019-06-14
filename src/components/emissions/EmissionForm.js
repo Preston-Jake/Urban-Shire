@@ -3,29 +3,12 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
 import Vehicle from './Vehicle';
 import { CustomInput } from 'reactstrap';
-import { dbCalls } from '../dbCalls/dbCalls';
-import { isBoolean } from 'util';
 
 
 
 export default class EmissionsForm extends Component {
 
-
-    // getNumOFVehicles = (num) => {
-    //     this.setState({ numOfVehicles: parseInt(num) })
-    // }
-
-    // handleFieldChange = (evt) => {
-    //     console.log(evt)
-    //     console.log(evt.target.id)
-    //     const stateToChange = {};
-    //     stateToChange[evt.target.id] = parseInt(evt.target.value);
-    //     this.setState(stateToChange);
-    // };
-
-    handleSumbit = () => {
-        dbCalls.post("emission_forms", this.state)
-    }
+    state = {}
 
     render() {
         return (
@@ -80,23 +63,23 @@ export default class EmissionsForm extends Component {
                     <Label for="exampleCheckbox">What do you recycle?</Label>
                     <div>
                         <CustomInput type="switch" name="customSwitch" label="Aluminum" id="aluminum" onChange={(e) => {
-                            this.props.toggleSwitch(e)
+                            this.props.toggleAluminum()
                         }} />
                         <CustomInput type="switch" id="plastic" name="customSwitch" label="Plastic" onChange={(e) => {
-                            this.props.toggleSwitch(e)
+                            this.props.togglePlastic(e)
                         }} />
                         <CustomInput type="switch" id="glass" name="customSwitch" label="Glass" onChange={(e) => {
-                            this.props.toggleSwitch(e)
+                            this.props.toggleGlass(e)
                         }} />
                         <CustomInput type="switch" id="newspaper" name="customSwitch" label="Newspaper" onChange={(e) => {
-                            this.props.toggleSwitch(e)
+                            this.props.toggleNewspaper(e)
                         }} />
                         <CustomInput type="switch" id="magazines" name="customSwitch" label="Magazines" onChange={(e) => {
-                            this.props.toggleSwitch(e)
+                            this.props.toggleMagazines(e)
                         }} />
                     </div>
                 </FormGroup>
-                <Button color="primary" size="lg" block onClick={this.handleSumbit}>Submit</Button>
+                <Button color="primary" type="button" size="lg" block onClick={this.props.handleSumbit}>Submit</Button>
             </Form>
         )
     }
