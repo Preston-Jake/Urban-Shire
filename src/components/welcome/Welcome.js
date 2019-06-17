@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import Register from './register'
 import LogIn from './login';
-
+import './welcome.css'
 
 
 class Welcome extends Component {
