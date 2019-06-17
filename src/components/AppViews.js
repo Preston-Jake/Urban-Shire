@@ -119,7 +119,7 @@ export default class AppView extends Component {
             <>
                 <Route exact path="/" render={(props) => <Welcome toggle={this.toggle} modal={this.state.modal} {...this.props} onRegister={(user) => this.setState({ user: user })} onLogin={(user) => this.setState({ user: user })} />} />
                 <Route exact path="/emissions/form" render={(props) => <EmissionsForm {...props} user={getUserFromLocalStorage()} getNumOFVehicles={this.getNumOFVehicles} handleFieldChange={this.handleFieldChange} createVehicleArray={this.createVehicleArray} numOfVehicles={this.state.numOfVehicles} toggleAluminum={this.toggleAluminum} togglePlastic={this.togglePlastic} toggleGlass={this.toggleGlass} toggleNewspaper={this.toggleNewspaper} toggleMagazines={this.toggleMagazines} handleSumbit={this.handleSumbit} />} />
-                <Route exact path="/emissions" render={(props) => <Emissions {...props} state={this.state} user={getUserFromLocalStorage()} />} />
+                <Route exact path="/emissions" render={(props) => <Emissions {...props} state={this.state} user={getUserFromLocalStorage()} toggle={this.toggle} modal={this.state.modal} handleFieldChange={this.handleFieldChange} />} />
             </>
         )
     }
