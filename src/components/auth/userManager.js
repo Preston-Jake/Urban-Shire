@@ -1,10 +1,19 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import { dbCalls } from '../dbCalls/dbCalls';
 
 const url = 'http://localhost:8088/users';
 
 const setUserInLocalStorage = (user) => {
     localStorage.setItem('user', JSON.stringify(user));
+}
+
+const initUserPlan = (user) => {
+    const userPlansObj = {
+        userId: user.id,
+        user_plans: []
+    }
+    return dbCalls.post("user_action_plans", userPlansObj)
 }
 
 // user will have username, email, and password
@@ -13,6 +22,7 @@ export const register = (user) => {
         .then(firebaseId => {
             user.password = null;
             user.id = firebaseId;
+            initUserPlan(user)
             return saveUserToJsonServer(user)
         })
         .then(newUserFromJsonServer => {
@@ -82,3 +92,4 @@ export const loginWithFirebase = (email, password) => {
             return data.user.uid;
         });
 }
+

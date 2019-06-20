@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as firebase from 'firebase/app';
-import AppView from './components/AppViews';
+import AppViews from './components/AppViews';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+
 
 
 var firebaseConfig = {
@@ -20,6 +21,6 @@ firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
     <Router>
-        <AppView />
+        <AppViews />
     </Router>
     , document.getElementById('root'));

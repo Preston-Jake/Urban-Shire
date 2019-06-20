@@ -10,6 +10,7 @@ export default class EmissionsForm extends Component {
 
     state = {}
 
+
     render() {
         return (
             <Form>
@@ -79,7 +80,7 @@ export default class EmissionsForm extends Component {
                         }} />
                     </div>
                 </FormGroup>
-                <Button color="primary" type="button" size="lg" block onClick={this.props.handleSumbit}>Submit</Button>
+                <Button color="primary" type="button" size="lg" block onClick={(e) => this.props.handleSubmit(e)}>Submit</Button>
             </Form>
         )
     }
