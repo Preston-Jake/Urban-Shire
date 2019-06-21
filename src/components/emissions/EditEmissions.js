@@ -3,8 +3,6 @@ import { Form, FormGroup, Button } from 'reactstrap';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Input, Label } from 'reactstrap';
 import { InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
 import { CustomInput } from 'reactstrap';
-import { dbCalls } from '../dbCalls/dbCalls';
-
 
 
 export default class EditEmissions extends Component {
