@@ -117,6 +117,12 @@ class AppView extends Component {
 
     }
 
+    handleCancel = (event, plan) => {
+        const newPlan = plan;
+        newPlan.isSelected = false;
+        this.setState(newPlan, () => { dbCalls.patchUserPlans(this.state.user_action_plans.id, this.state.user_action_plans) })
+    }
+
     getNumOFVehicles = (num) => {
         this.setState({ numOfVehicles: parseInt(num) })
     }
@@ -298,7 +304,7 @@ class AppView extends Component {
                 />
 
                 <Route exact path="/emissions" render={(props) =>
-                    <Emissions {...props} {...this.state} user={getUserFromLocalStorage()} toggle={this.toggle} modal={this.state.modal} handleFieldChange={this.handleFieldChange} handleUpdate={this.handleUpdate} toggleAluminum={this.toggleAluminum} togglePlastic={this.togglePlastic} toggleGlass={this.toggleGlass} toggleNewspaper={this.toggleNewspaper} toggleMagazines={this.toggleMagazines} toggleActionPlanModal={this.toggleActionPlanModal} handleSelect={this.handleSelect} handlePlansSubmit={this.handlePlansSubmit} handleComplete={this.handleComplete} />}
+                    <Emissions {...props} {...this.state} user={getUserFromLocalStorage()} toggle={this.toggle} modal={this.state.modal} handleFieldChange={this.handleFieldChange} handleUpdate={this.handleUpdate} toggleAluminum={this.toggleAluminum} togglePlastic={this.togglePlastic} toggleGlass={this.toggleGlass} toggleNewspaper={this.toggleNewspaper} toggleMagazines={this.toggleMagazines} toggleActionPlanModal={this.toggleActionPlanModal} handleSelect={this.handleSelect} handleCancel={this.handleCancel} handlePlansSubmit={this.handlePlansSubmit} handleComplete={this.handleComplete} />}
                 />
 
             </>

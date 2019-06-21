@@ -6,6 +6,7 @@ export default class UserPlans extends Component {
 
 
     render() {
+        console.log(this.props)
         if (this.props.user_action_plans.user_plans.length === 0) {
             return (<h3>No Plans</h3>)
         } else {
@@ -19,7 +20,7 @@ export default class UserPlans extends Component {
                             <CardText>{p.description}</CardText>
                             <CardText>{p.reduce_emissions}lbs C0<sub>2</sub></CardText>
                             <Button color="success" id={p.id} onClick={(e) => { this.props.handleComplete(e, p) }}>Complete</Button>
-                            <Button>Cancel</Button>
+                            <Button onClick={(e) => { this.props.handleCancel(e, p) }}>Cancel</Button>
                         </Card >
                     )
                 } else {
