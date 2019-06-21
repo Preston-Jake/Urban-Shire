@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import * as firebase from 'firebase/app';
 import AppViews from './components/AppViews';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import Navi from './components/nav/Navi';
+
 
 
 
@@ -21,6 +23,7 @@ firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
     <Router>
+        <Navi />
         <AppViews />
     </Router>
     , document.getElementById('root'));

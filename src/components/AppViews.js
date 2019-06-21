@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 import EmissionsForm from './emissions/EmissionForm';
 import Emissions from './emissions/Emissions';
 import { dbCalls } from '../components/dbCalls/dbCalls'
-import ActionPlan from './action/ActionPlan';
 
 class AppView extends Component {
     state = {
@@ -291,7 +290,6 @@ class AppView extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <>
                 <Route exact path="/" render={(props) =>
