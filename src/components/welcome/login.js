@@ -18,7 +18,6 @@ export default class LogIn extends Component {
                     if (this.props.user !== undefined) {
                         this.props.history.push("/emissions")
                     }
-
                 }
             );
     }
@@ -28,7 +27,7 @@ export default class LogIn extends Component {
             <div>
                 <Input placeholder="Email" onChange={(e) => this.setState({ email: e.target.value })} />
                 <Input placeholder="Password" onChange={(e) => this.setState({ password: e.target.value })} />
-                <Button color="primary" size="lg" block onClick={() => { this.submit() }}>Log In</Button>
+                <Button color="primary" size="lg" block onClick={(e) => { e.preventDefault(); this.submit() }}>Log In</Button>
                 {/* <Alert className="auth__message">
                     Not registered yet?
                 </Alert> */}

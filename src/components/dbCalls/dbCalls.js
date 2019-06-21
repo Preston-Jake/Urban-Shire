@@ -44,5 +44,10 @@ export const dbCalls = {
             },
             body: JSON.stringify(data),
         }).then(r => r.json())
+    },
+    getActionPlans: () => {
+        return fetch(`${db}/action_plans`, {
+            method: "GET",
+        }).then(r => r.json())
     }
 }

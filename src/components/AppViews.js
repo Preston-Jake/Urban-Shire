@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import EmissionsForm from './emissions/EmissionForm';
 import Emissions from './emissions/Emissions';
 import { dbCalls } from '../components/dbCalls/dbCalls'
+import ActionPlan from './action/ActionPlan';
 
 class AppView extends Component {
     state = {
@@ -39,51 +40,8 @@ class AppView extends Component {
         user_action_plans: {
             user_plans: []
         },
-        user_plans: [],
-        action_plans: [
-            {
-                id: 1,
-                name: "LED Lighting lvl 1",
-                description: "Replace 10 old light bulbs with their LED equivalent.",
-                reduce_emissions: 460,
-                isComplete: false
-            },
-            {
-                id: 2,
-                name: "LED Lighting lvl 2",
-                description: "Replace 25 old light bulbs with their LED equivalent.",
-                reduce_emissions: 920,
-                isComplete: false
-            },
-            {
-                id: 3,
-                name: "LED Lighting lvl 3",
-                description: "Replace 50 old light bulbs with their LED equivalent.",
-                reduce_emissions: 2300,
-                isComplete: false
-            },
-            {
-                id: 4,
-                name: "Upgrade Windows",
-                description: "Make your home's heating and cooling more efficient with upgraded windows",
-                reduce_emissions: 3000,
-                isComplete: false
-            },
-            {
-                id: 5,
-                name: "Go Vegan or Vegitarian",
-                description: "NO MORE MEATS FOR YOU",
-                reduce_emissions: 2000,
-                isComplete: false
-            },
-            {
-                id: 6,
-                name: "Meatless Monday",
-                description: "No meat on monday",
-                "reduce_emissions": 400,
-                isComplete: false
-            }
-        ],
+        selected_plans: [],
+        action_plans: []
     }
 
     constructor(props) {
@@ -91,22 +49,32 @@ class AppView extends Component {
         this.toggle = this.toggle.bind(this);
         this.toggleActionPlanModal = this.toggleActionPlanModal.bind(this)
     }
-    handleSelect = (selected) => {
-        const index = this.state.user_plans.indexOf(selected);
+    handleSelect = (selected, i) => {
+        const index = this.state.selected_plans.indexOf(selected.id);
         if (index < 0) {
-            this.state.user_plans.push(selected);
+            this.state.selected_plans.push(selected.id);
+            const newState = this.state.action_plans[i]
+            newState.isSelected = true
+            this.setState(newState)
         } else {
-            this.state.user_plans.splice(index, 1);
+            this.state.selected_plans.splice(index, 1);
+            const newState = this.state.action_plans[i]
+            newState.isSelected = false
+            this.setState(newState)
         }
-        this.setState({ user_plans: [...this.state.user_plans] });
+        this.setState({ selected_plans: [...this.state.selected_plans] });
     }
 
     handlePlansSubmit = (e) => {
         e.preventDefault();
         const userPlanObj = {
-            user_plans: this.state.user_plans
+            user_plans: this.state.action_plans
         }
-        dbCalls.patchUserPlans(this.state.user_action_plans.id, userPlanObj)
+        dbCalls.patchUserPlans(this.state.user_action_plans.id, userPlanObj).then(
+            (e) => {
+                this.setState({ user_action_plans: e, selected_plans: [] })
+            }
+        )
     }
 
     handleSubmit = (e) => {
@@ -141,15 +109,11 @@ class AppView extends Component {
                 this.setState(form)
             })
     }
-    handleComplete = (e) => {
-        const newArray = this.state.user_action_plans.user_plans.filter((id) => {
-            if (id !== parseInt(e.target.id)) {
-                return id
-            }
-        })
-        console.log(newArray)
-
-        dbCalls.patchUserPlans(this.state.user_action_plans.id, newArray).then(e => this.setState(e))
+    handleComplete = (event, plan) => {
+        const newPlan = plan
+        newPlan.isComplete = true
+        newPlan.isSelected = false
+        this.setState(newPlan, () => { dbCalls.patchUserPlans(this.state.user_action_plans.id, this.state.user_action_plans) })
 
     }
 
@@ -285,21 +249,15 @@ class AppView extends Component {
         return (waste)
     }
 
-    refreshPage = (result) => {
-        this.props.history.push("/emissions")
-        this.setState(result)
-    }
-
-
     componentDidMount = () => {
         if (this.state.user === null) {
-            return
+            return this.props.history.push("/")
         } else {
-            let newState = {}
             dbCalls.getUserEmissions(this.state.user.id).then(e => {
                 if (e.length === 0) {
                     return this.props.history.push("/emissions/form")
                 } else {
+                    let newState = {}
                     newState = e[0]
                     newState.totalHomeEmissions = this.homeEmissions(e[0])
                     newState.totalVehicleEmissions = this.vehicleEmissions(e[0])
@@ -308,11 +266,19 @@ class AppView extends Component {
                     this.setState(newState)
                 }
             }).then(
-                dbCalls.getUserPlans(this.state.user.id).then(w => {
-                    this.setState({
-                        user_action_plans: w[0],
-                        user_plans: w[0].user_plans
-                    })
+                dbCalls.getActionPlans().then(
+                    r => this.setState({ action_plans: r })
+                )
+            ).then(
+                dbCalls.getUserPlans(this.state.user.id).then((w) => {
+                    if (w[0].user_plans.length === 0) {
+                        this.setState({ user_action_plans: w[0] })
+                    } else {
+                        this.setState({
+                            user_action_plans: w[0],
+                            action_plans: w[0].user_plans
+                        })
+                    }
                 })
             )
         }
@@ -327,7 +293,7 @@ class AppView extends Component {
                 />
                 <Route exact path="/emissions/form" render={(props) =>
 
-                    <EmissionsForm {...props} user={getUserFromLocalStorage()} getNumOFVehicles={this.getNumOFVehicles} handleFieldChange={this.handleFieldChange} createVehicleArray={this.createVehicleArray} numOfVehicles={this.state.numOfVehicles} toggleAluminum={this.toggleAluminum} togglePlastic={this.togglePlastic} toggleGlass={this.toggleGlass} toggleNewspaper={this.toggleNewspaper} toggleMagazines={this.toggleMagazines} handleSubmit={this.handleSubmit} />
+                    <EmissionsForm {...props} user={getUserFromLocalStorage()} getNumOFVehicles={this.getNumOFVehicles} handleFieldChange={this.handleFieldChange} createVehicleArray={this.createVehicleArray} numOfVehicles={this.state.numOfVehicles} toggleAluminum={this.toggleAluminum} togglePlastic={this.togglePlastic} toggleGlass={this.toggleGlass} toggleNewsp-aper={this.toggleNewspaper} toggleMagazines={this.toggleMagazines} handleSubmit={this.handleSubmit} />
                 }
                 />
 
