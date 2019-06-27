@@ -115,13 +115,18 @@ class AppView extends Component {
                 this.setState(newState)
             })
     }
-    handleComplete = (event, plan) => {
+    handleComplete = (event, plan, index) => {
+        event.preventDefault()
         const newPlan = plan
         newPlan.isComplete = true
         newPlan.isSelected = false
-        this.setState(newPlan, () => { dbCalls.patchUserPlans(this.state.user_action_plans.id, this.state.user_action_plans) })
-
+        this.setState({}, () => {
+            dbCalls.patchUserPlans(this.state.user_action_plans.id, this.state.user_action_plans).then(
+                (r) => { this.setState({ action_plans: r.user_plans }) }
+            )
+        })
     }
+
 
     handleCancel = (event, plan) => {
         const newPlan = plan;
@@ -275,8 +280,21 @@ class AppView extends Component {
                                 newState.totalVehicleEmissions = this.vehicleEmissions(r[0])
                                 newState.totalWasteEmissions = this.wasteEmissions(r[0])
                                 newState.totalEmissions = this.homeEmissions(r[0]) + this.vehicleEmissions(r[0]) + this.wasteEmissions(r[0])
+                                newState.password = ""
                                 this.setState(newState)
                             }
+                        ).then(
+                            dbCalls.getUserPlans(this.state.user.id).then(
+                                (plan) => {
+                                    const newState = {};
+                                    newState.user_action_plans = plan[0]
+                                    this.setState(newState)
+                                }
+                            )
+                        ).then(
+                            dbCalls.getActionPlans().then(
+                                r => this.setState({ action_plans: r })
+                            )
                         )
                         this.props.history.push("/emissions")
 
@@ -335,8 +353,7 @@ class AppView extends Component {
     }
 
     render() {
-        // console.log(this.state)
-
+        console.log(this.state)
         return (
             <>
                 <Route exact path="/" render={(props) =>

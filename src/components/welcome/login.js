@@ -6,7 +6,7 @@ import { Alert } from 'reactstrap';
 export default class LogIn extends Component {
 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <div id="container_login">
                 <Input placeholder="Email" onChange={(e) => this.props.handleEmail(e)} />

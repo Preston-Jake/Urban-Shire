@@ -15,7 +15,7 @@ class Navi extends Component {
                     <Nav>
                         <h1 id="nav_title">UrbanShire</h1>
                         <NavItem>
-                            <NavLink href="#">About</NavLink>
+                            <NavLink href="/carbonprofile">CO<sub>2</sub> Profile</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink href="#" onClick={() => { logout(); this.props.history.push("/"); }}>Logout</NavLink>
