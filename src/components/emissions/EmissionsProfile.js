@@ -3,13 +3,16 @@ import ActionPlan from '../action/ActionPlan';
 export default class EmissionsProfile extends Component {
 
     render() {
-        let totalE
+        //if evrey plan is false return totalEmissions//else return totalEmissons - reduce emissions
+        let totalE = this.props.totalEmissions
         this.props.action_plans.map(plan => {
             if (plan.isComplete === true) {
-                totalE = this.props.totalEmissions - plan.reduce_emissions
-
+                totalE -= plan.reduce_emissions
+            } else {
+                totalE -= 0
             }
         })
+
         return (
             <div id="wrapper_emissions">
                 <h1 id="title_emissions">{Math.round(totalE)}lbs CO<sub>2</sub></h1>
