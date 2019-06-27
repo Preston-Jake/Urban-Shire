@@ -1,0 +1,296 @@
+{
+  "users": [
+    {
+      "email": "jake@internet.com",
+      "username": "Jake ",
+      "password": null,
+      "id": "cvQLKdAG4uNOqjnBU68Q8NuDYoJ2"
+    },
+    {
+      "email": "dude@interneet.com",
+      "username": "dude",
+      "password": null,
+      "id": "wo4eoPQNpdYex2lhpCl0Ne1mxPq2"
+    },
+    {
+      "email": "newdude@internet.com",
+      "username": "NewDude",
+      "password": null,
+      "id": "JKIDQkVwdGOkENqSxgiXgUU2Pw42"
+    },
+    {
+      "email": "jackson@internet.com",
+      "username": "NLJACKSON",
+      "password": null,
+      "id": "dhhvQwpxPtMiPxw2reMxmhThpFg1"
+    }
+  ],
+  "emission_forms": [
+    {
+      "numOfPeople": 2,
+      "naturalGas": 35,
+      "electricity": 150,
+      "fuelOil": 0,
+      "propane": 0,
+      "vehicle_0_mpg": 10,
+      "vehicle_0_miles": 250,
+      "vehicle_1_mpg": 19,
+      "vehicle_1_miles": 150,
+      "vehicle_2_mpg": 20,
+      "vehicle_2_miles": 130,
+      "vehicle_3_mpg": 0,
+      "vehicle_3_miles": 0,
+      "vehicle_4_mpg": 0,
+      "vehicle_4_miles": 0,
+      "aluminum": false,
+      "plastic": true,
+      "glass": false,
+      "newspaper": false,
+      "magazines": true,
+      "userId": "cvQLKdAG4uNOqjnBU68Q8NuDYoJ2",
+      "id": 1
+    },
+    {
+      "numOfPeople": 2,
+      "naturalGas": 20,
+      "electricity": 150,
+      "fuelOil": 0,
+      "propane": 0,
+      "vehicle_0_mpg": 20,
+      "vehicle_0_miles": 230,
+      "vehicle_1_mpg": 0,
+      "vehicle_1_miles": 0,
+      "vehicle_2_mpg": 0,
+      "vehicle_2_miles": 0,
+      "vehicle_3_mpg": 0,
+      "vehicle_3_miles": 0,
+      "vehicle_4_mpg": 0,
+      "vehicle_4_miles": 0,
+      "aluminum": true,
+      "plastic": false,
+      "glass": false,
+      "newspaper": false,
+      "magazines": false,
+      "userId": "wo4eoPQNpdYex2lhpCl0Ne1mxPq2",
+      "id": 2
+    },
+    {
+      "numOfPeople": 2,
+      "naturalGas": 30,
+      "electricity": 175,
+      "fuelOil": 0,
+      "propane": 0,
+      "vehicle_0_mpg": 20,
+      "vehicle_0_miles": 250,
+      "vehicle_1_mpg": 14,
+      "vehicle_1_miles": 150,
+      "vehicle_2_mpg": 0,
+      "vehicle_2_miles": 0,
+      "vehicle_3_mpg": 0,
+      "vehicle_3_miles": 0,
+      "vehicle_4_mpg": 0,
+      "vehicle_4_miles": 0,
+      "aluminum": true,
+      "plastic": false,
+      "glass": true,
+      "newspaper": false,
+      "magazines": false,
+      "userId": "JKIDQkVwdGOkENqSxgiXgUU2Pw42",
+      "id": 3
+    },
+    {
+      "numOfPeople": 1,
+      "naturalGas": 40,
+      "electricity": 140,
+      "fuelOil": 0,
+      "propane": 0,
+      "vehicle_0_mpg": 20,
+      "vehicle_0_miles": 150,
+      "vehicle_1_mpg": 0,
+      "vehicle_1_miles": 0,
+      "vehicle_2_mpg": 0,
+      "vehicle_2_miles": 0,
+      "vehicle_3_mpg": 0,
+      "vehicle_3_miles": 0,
+      "vehicle_4_mpg": 0,
+      "vehicle_4_miles": 0,
+      "aluminum": true,
+      "plastic": true,
+      "glass": false,
+      "newspaper": false,
+      "magazines": false,
+      "userId": "dhhvQwpxPtMiPxw2reMxmhThpFg1",
+      "id": 4
+    }
+  ],
+  "user_action_plans": [
+    {
+      "userId": "cvQLKdAG4uNOqjnBU68Q8NuDYoJ2",
+      "user_plans": [
+        {
+          "id": 1,
+          "name": "LED Lighting lvl 1",
+          "description": "Replace 5 old light bulbs with their LED equivalent.",
+          "reduce_emissions": 230,
+          "isComplete": true,
+          "isSelected": false
+        },
+        {
+          "id": 2,
+          "name": "LED Lighting lvl 2",
+          "description": "Replace 10 old light bulbs with their LED equivalent.",
+          "reduce_emissions": 460,
+          "isComplete": true,
+          "isSelected": false
+        },
+        {
+          "id": 3,
+          "name": "LED Lighting lvl 3",
+          "description": "Replace 25 old light bulbs with their LED equivalent.",
+          "reduce_emissions": 1150,
+          "isComplete": false,
+          "isSelected": false
+        },
+        {
+          "id": 5,
+          "name": "Upgrade Windows",
+          "description": "Make your home's heating and cooling more efficient with upgraded windows",
+          "reduce_emissions": 3000,
+          "isComplete": false,
+          "isSelected": false
+        },
+        {
+          "id": 6,
+          "name": "Go Vegan or Vegitarian",
+          "description": "NO MORE MEATS FOR YOU",
+          "reduce_emissions": 2000,
+          "isComplete": false,
+          "isSelected": false
+        },
+        {
+          "id": 7,
+          "name": "Meatless Monday",
+          "description": "No meat on monday",
+          "reduce_emissions": 400,
+          "isComplete": false,
+          "isSelected": false
+        }
+      ],
+      "id": 1
+    },
+    {
+      "userId": "wo4eoPQNpdYex2lhpCl0Ne1mxPq2",
+      "user_plans": [],
+      "id": 2
+    },
+    {
+      "userId": "JKIDQkVwdGOkENqSxgiXgUU2Pw42",
+      "user_plans": [],
+      "id": 3
+    },
+    {
+      "userId": "dhhvQwpxPtMiPxw2reMxmhThpFg1",
+      "user_plans": [
+        {
+          "id": 1,
+          "name": "LED Lighting lvl 1",
+          "description": "Replace 5 old light bulbs with their LED equivalent.",
+          "reduce_emissions": 920,
+          "isComplete": true,
+          "isSelected": false
+        },
+        {
+          "id": 2,
+          "name": "LED Lighting lvl 2",
+          "description": "Replace 10 old light bulbs with their LED equivalent.",
+          "reduce_emissions": 920,
+          "isComplete": false,
+          "isSelected": false
+        },
+        {
+          "id": 3,
+          "name": "LED Lighting lvl 3",
+          "description": "Replace 25 old light bulbs with their LED equivalent.",
+          "reduce_emissions": 2300,
+          "isComplete": true,
+          "isSelected": false
+        },
+        {
+          "id": 4,
+          "name": "Upgrade Windows",
+          "description": "Make your home's heating and cooling more efficient with upgraded windows",
+          "reduce_emissions": 3000,
+          "isComplete": false,
+          "isSelected": false
+        },
+        {
+          "id": 5,
+          "name": "Go Vegan or Vegitarian",
+          "description": "NO MORE MEATS FOR YOU",
+          "reduce_emissions": 2000,
+          "isComplete": true,
+          "isSelected": false
+        },
+        {
+          "id": 6,
+          "name": "Meatless Monday",
+          "description": "No meat on monday",
+          "reduce_emissions": 400,
+          "isComplete": true,
+          "isSelected": false
+        }
+      ],
+      "id": 4
+    }
+  ],
+  "action_plans": [
+    {
+      "id": 1,
+      "name": "LED Lighting lvl 1",
+      "description": "Replace 5 old light bulbs with their LED equivalent.",
+      "reduce_emissions": 920,
+      "isComplete": false,
+      "isSelected": false
+    },
+    {
+      "id": 2,
+      "name": "LED Lighting lvl 2",
+      "description": "Replace 10 old light bulbs with their LED equivalent.",
+      "reduce_emissions": 920,
+      "isComplete": false,
+      "isSelected": false
+    },
+    {
+      "id": 3,
+      "name": "LED Lighting lvl 3",
+      "description": "Replace 25 old light bulbs with their LED equivalent.",
+      "reduce_emissions": 2300,
+      "isComplete": false,
+      "isSelected": false
+    },
+    {
+      "id": 4,
+      "name": "Upgrade Windows",
+      "description": "Make your home's heating and cooling more efficient with upgraded windows",
+      "reduce_emissions": 3000,
+      "isComplete": false,
+      "isSelected": false
+    },
+    {
+      "id": 5,
+      "name": "Go Vegan or Vegitarian",
+      "description": "NO MORE MEATS FOR YOU",
+      "reduce_emissions": 2000,
+      "isComplete": false,
+      "isSelected": false
+    },
+    {
+      "id": 6,
+      "name": "Meatless Monday",
+      "description": "No meat on monday",
+      "reduce_emissions": 400,
+      "isComplete": false,
+      "isSelected": false
+    }
+  ]
+}
