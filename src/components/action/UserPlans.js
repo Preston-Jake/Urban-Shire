@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Card, CardText, Row, Col, CardHeader, CustomInput, Button } from 'reactstrap';
+import { Button, CardImg } from 'reactstrap';
+import '../../main.css'
 
 
 export default class UserPlans extends Component {
 
 
     render() {
-        console.log(this.props)
         if (this.props.user_action_plans.user_plans.length === 0) {
             return (<h3>No Plans</h3>)
         } else {
@@ -15,13 +15,14 @@ export default class UserPlans extends Component {
                     return null
                 } else if (p.isSelected === true) {
                     return (
-                        <Card key={p.id}>
-                            <CardHeader>{p.name}</CardHeader>
-                            <CardText>{p.description}</CardText>
-                            <CardText>{p.reduce_emissions}lbs C0<sub>2</sub></CardText>
+                        <div key={p.id} className="container_plan">
+                            <CardImg top width="100%" src="" alt="Card image cap" />
+                            <h3>{p.name}</h3>
+                            <p>{p.description}</p>
+                            <p>{p.reduce_emissions}lbs C0<sub>2</sub></p>
                             <Button color="success" id={p.id} onClick={(e) => { this.props.handleComplete(e, p) }}>Complete</Button>
                             <Button onClick={(e) => { this.props.handleCancel(e, p) }}>Cancel</Button>
-                        </Card >
+                        </div >
                     )
                 } else {
                     return null

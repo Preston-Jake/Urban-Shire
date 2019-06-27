@@ -6,15 +6,18 @@ import { withRouter } from 'react-router-dom';
 import EmissionsForm from './emissions/EmissionForm';
 import Emissions from './emissions/Emissions';
 import { dbCalls } from '../components/dbCalls/dbCalls'
+import { login } from './auth/userManager'
+import EmissionsProfile from './emissions/EmissionsProfile';
 
 class AppView extends Component {
     state = {
+        email: "",
+        password: "",
         numOfPeople: 1,
         naturalGas: 0,
         electricity: 0,
         fuelOil: 0,
         propane: 0,
-        numOfVehicles: 0,
         vehicle_0_mpg: 0,
         vehicle_0_miles: 0,
         vehicle_1_mpg: 0,
@@ -84,7 +87,6 @@ class AppView extends Component {
             electricity: this.state.electricity,
             fuelOil: this.state.fuelOil,
             propane: this.state.propane,
-            numOfVehicles: this.state.numOfVehicles,
             vehicle_0_mpg: this.state.vehicle_0_mpg,
             vehicle_0_miles: this.state.vehicle_0_miles,
             vehicle_1_mpg: this.state.vehicle_1_mpg,
@@ -105,7 +107,12 @@ class AppView extends Component {
         dbCalls.post("emission_forms", formObj)
             .then((form) => {
                 this.props.history.push("/emissions")
-                this.setState(form)
+                let newState = form
+                newState.totalHomeEmissions = this.homeEmissions(form)
+                newState.totalVehicleEmissions = this.vehicleEmissions(form)
+                newState.totalWasteEmissions = this.wasteEmissions(form)
+                newState.totalEmissions = this.homeEmissions(form) + this.vehicleEmissions(form) + this.wasteEmissions(form)
+                this.setState(newState)
             })
     }
     handleComplete = (event, plan) => {
@@ -122,10 +129,6 @@ class AppView extends Component {
         this.setState(newPlan, () => { dbCalls.patchUserPlans(this.state.user_action_plans.id, this.state.user_action_plans) })
     }
 
-    getNumOFVehicles = (num) => {
-        this.setState({ numOfVehicles: parseInt(num) })
-    }
-
     handleFieldChange = (evt) => {
         // console.log(evt.target.id)
         const stateToChange = {};
@@ -140,7 +143,6 @@ class AppView extends Component {
             electricity: this.state.electricity,
             fuelOil: this.state.fuelOil,
             propane: this.state.propane,
-            numOfVehicles: this.state.numOfVehicles,
             vehicle_0_mpg: this.state.vehicle_0_mpg,
             vehicle_0_miles: this.state.vehicle_0_miles,
             vehicle_1_mpg: this.state.vehicle_1_mpg,
@@ -237,21 +239,64 @@ class AppView extends Component {
     wasteEmissions = (e) => {
         let waste = e.numOfPeople * 696
         if (e.aluminum === true) {
-            waste = waste - 89
+            waste = waste - (89 * e.numOfPeople)
         }
         if (e.plastic === true) {
-            waste = waste - 39
+            waste = waste - (39 * e.numOfPeople)
         }
         if (e.glass === true) {
-            waste = waste - 25
+            waste = waste - (25 * e.numOfPeople)
         }
         if (e.newspaper === true) {
-            waste = waste - 113
+            waste = waste - (119)
         }
         if (e.magazines === true) {
-            waste = waste - 27
+            waste = waste - (27)
         }
         return (waste)
+    }
+    handleEmail = (e) => { this.setState({ email: e.target.value }) }
+
+    handlePassword = (e) => { this.setState({ password: e.target.value }) }
+
+    onRegister = (user) => { this.setState({ user: user }) }
+
+    submit = () => {
+        login(this.state.email, this.state.password)
+            .then(user => {
+                this.setState({ user: user });
+            }).then(
+                () => {
+                    if (this.state.user !== undefined) {
+                        dbCalls.getUserEmissions(this.state.user.id).then(
+                            (r) => {
+                                const newState = r[0];
+                                newState.totalHomeEmissions = this.homeEmissions(r[0])
+                                newState.totalVehicleEmissions = this.vehicleEmissions(r[0])
+                                newState.totalWasteEmissions = this.wasteEmissions(r[0])
+                                newState.totalEmissions = this.homeEmissions(r[0]) + this.vehicleEmissions(r[0]) + this.wasteEmissions(r[0])
+                                this.setState(newState)
+                            }
+                        )
+                        this.props.history.push("/emissions")
+
+
+                    }
+                }
+            )
+    }
+
+    cancel = () => {
+        dbCalls.getUserEmissions(this.state.user.id).then(
+            (r) => {
+                const newState = r[0];
+                newState.totalHomeEmissions = this.homeEmissions(r[0])
+                newState.totalVehicleEmissions = this.vehicleEmissions(r[0])
+                newState.totalWasteEmissions = this.wasteEmissions(r[0])
+                newState.totalEmissions = this.homeEmissions(r[0]) + this.vehicleEmissions(r[0]) + this.wasteEmissions(r[0])
+                this.setState(newState)
+            }
+        )
     }
 
     componentDidMount = () => {
@@ -290,21 +335,25 @@ class AppView extends Component {
     }
 
     render() {
+        // console.log(this.state)
+
         return (
             <>
                 <Route exact path="/" render={(props) =>
-                    <Welcome {...props} {...this.state} toggle={this.toggle} modal={this.state.modal} {...this.props} onRegister={(user) => this.setState({ user: user })} onLogin={(user) => this.setState({ user: user })} />}
+                    <Welcome {...props} {...this.state} toggle={this.toggle} modal={this.state.modal} {...this.props} onRegister={this.onRegister} onLogin={this.onLogin} handleEmail={this.handleEmail} handlePassword={this.handlePassword} submit={this.submit} />}
                 />
                 <Route exact path="/emissions/form" render={(props) =>
 
-                    <EmissionsForm {...props} user={getUserFromLocalStorage()} getNumOFVehicles={this.getNumOFVehicles} handleFieldChange={this.handleFieldChange} createVehicleArray={this.createVehicleArray} numOfVehicles={this.state.numOfVehicles} toggleAluminum={this.toggleAluminum} togglePlastic={this.togglePlastic} toggleGlass={this.toggleGlass} toggleNewsp-aper={this.toggleNewspaper} toggleMagazines={this.toggleMagazines} handleSubmit={this.handleSubmit} />
+                    <EmissionsForm {...props} user={getUserFromLocalStorage()} handleFieldChange={this.handleFieldChange} createVehicleArray={this.createVehicleArray} numOfVehicles={this.state.numOfVehicles} toggleAluminum={this.toggleAluminum} togglePlastic={this.togglePlastic} toggleGlass={this.toggleGlass} toggleNewspaper={this.toggleNewspaper} toggleMagazines={this.toggleMagazines} handleSubmit={this.handleSubmit} />
                 }
                 />
 
-                <Route exact path="/emissions" render={(props) =>
-                    <Emissions {...props} {...this.state} user={getUserFromLocalStorage()} toggle={this.toggle} modal={this.state.modal} handleFieldChange={this.handleFieldChange} handleUpdate={this.handleUpdate} toggleAluminum={this.toggleAluminum} togglePlastic={this.togglePlastic} toggleGlass={this.toggleGlass} toggleNewspaper={this.toggleNewspaper} toggleMagazines={this.toggleMagazines} toggleActionPlanModal={this.toggleActionPlanModal} handleSelect={this.handleSelect} handleCancel={this.handleCancel} handlePlansSubmit={this.handlePlansSubmit} handleComplete={this.handleComplete} />}
+                <Route exact path="/carbonprofile" render={(props) =>
+                    <Emissions {...props} {...this.state} user={getUserFromLocalStorage()} toggle={this.toggle} modal={this.state.modal} handleFieldChange={this.handleFieldChange} handleUpdate={this.handleUpdate} toggleAluminum={this.toggleAluminum} togglePlastic={this.togglePlastic} toggleGlass={this.toggleGlass} toggleNewspaper={this.toggleNewspaper} toggleMagazines={this.toggleMagazines} toggleActionPlanModal={this.toggleActionPlanModal} handleSelect={this.handleSelect} handleCancel={this.handleCancel} handlePlansSubmit={this.handlePlansSubmit} handleComplete={this.handleComplete} cancel={this.cancel} />}
                 />
-
+                <Route exact path="/emissions" render={(props) =>
+                    <EmissionsProfile {...props} {...this.state} user={getUserFromLocalStorage()} toggle={this.toggle} modal={this.state.modal} handleFieldChange={this.handleFieldChange} handleUpdate={this.handleUpdate} toggleAluminum={this.toggleAluminum} togglePlastic={this.togglePlastic} toggleGlass={this.toggleGlass} toggleNewspaper={this.toggleNewspaper} toggleMagazines={this.toggleMagazines} toggleActionPlanModal={this.toggleActionPlanModal} handleSelect={this.handleSelect} handleCancel={this.handleCancel} handlePlansSubmit={this.handlePlansSubmit} handleComplete={this.handleComplete} cancel={this.cancel} />}
+                />
             </>
         )
     }

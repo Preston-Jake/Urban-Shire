@@ -1,0 +1,258 @@
+@font-face {
+    font-family: 'Cunia';
+    src: url("/public/fonts/Cunia.ttf") format("truetype");
+    font-style: normal;
+
+  }
+
+  @import url(//fonts.googleapis.com/css?family=Open+Sans);
+*{
+    box-sizing: border-box;
+}
+  body {
+    
+    font-family: 'Open Sans', sans-serif;
+    background: #50a26b url(./img/cool-background.png) no-repeat center / cover; 
+    height: 100%;   
+}
+
+/* ===================== Welcome =========================== */
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 38.20vh;
+}
+
+header p{
+    align-self: flex-start;
+    margin: 1.32vh;
+}
+
+Header h1 {
+    font-size: 5.57vh   ;
+    color: #000454;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-family: 'Cunia', 'Open Sans', sans-serif;
+    align-self: center;
+}
+
+
+
+#wrapper_welcome{
+    
+}
+
+#container_account{
+    display: flex;
+    flex-direction: column;
+    height: 61.8vh;
+}
+
+#container_login{
+   margin-bottom: auto
+}
+
+#btn_login,
+#btn_register{
+    background: goldenrod;
+    color: black;
+    font-family: 'Cunia', 'Open Sans', sans-serif;
+}
+
+#mission_statement{
+    background: #A0D8D5;
+    color: #0E2618;
+    padding: 2.13vh;
+    margin: 0 3.44vh auto 3.44vh;
+    border-radius: 1.32vh;
+    text-align: center;
+    box-shadow: 0px 8px 7px
+}
+/* ========================== NAV ========================== */
+#main_nav{
+    position: fixed;
+    overflow: hidden;
+    background-color: goldenrod;
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%;
+}
+
+#nav_title{
+    font-family: 'Cunia', 'Open Sans', sans-serif;
+    font-size: 3.44vh;
+    margin:auto;
+}
+
+.nav-link:hover{
+    background-color: darkgoldenrod;
+}
+/* ======================== CO2 PROFILE =========================== */
+#wrapper_profile{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5.57vh;
+}
+
+#title_emissions{
+    font-size: 5.57vh;
+    margin: auto;
+}
+
+#container_home,
+#container_waste{
+    height: 38.20vh;
+    background: #A0D8D5;
+    margin: 1.32vh;
+    border-radius: 1.32vh;
+    box-shadow: 0px 8px 7px;
+}
+
+#container_vehicle{
+    height: 61.8vh;
+    background: #A0D8D5;
+    margin: 1.32vh;
+    border-radius: 1.32vh;
+    box-shadow: 0px 8px 7px;
+}
+
+#header_home,
+#header_vehicle,
+#header_waste{
+    height: 14.59vh;
+}
+
+#title_home,
+#title_vehicle,
+#title_waste{
+    display: flex;
+    align-items: center;
+    height: 9.02vh;
+    font-size: 5.57vh;
+    margin: auto;
+}
+
+#total_home_emissions,
+#total_vehicle_emissions,
+#total_waste_emissions{
+    display: flex;
+    align-items: center;
+    height: 5.57vh;
+    font-size: 3.44vh;
+    margin: auto;
+}
+
+#content_home, 
+#content_recycling{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: auto;
+    height: 23.61vh;
+    padding-left: 5.57vh
+}
+
+#container_vehicle_content{
+    height: 47.21vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.home_rsc{
+    font-size: 2.13vh;
+}
+
+.item_vehicle{
+    height: 5.57vh;
+
+}
+
+.content_vechicle_title{
+    font-size: 3.44vh;
+    margin: auto;
+    
+}
+
+.container_vehicle_info{
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+.content_vehicle_info{
+    margin: auto;
+    font-size: 2.13vh;
+}
+
+#container_waste_content{
+    height: 23.61vh;
+}
+
+
+#btn_edit{
+    height: 3.44vh;
+    padding: 0;
+}
+
+#action_plan_title{
+    display: inline-block;
+    
+}
+
+/* =================== Emissions =============================== */
+
+#wrapper_emissions{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-bottom: 38.2vh;
+    margin-top: 5.57vh;
+}
+
+#title_emissions{
+    font-family: 'Cunia';
+    color: #000454;
+    height: 61.8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#container_action_plan{
+   
+}
+
+#header_action_plan{
+    display: flex;
+    justify-content: space-around;
+    height: 5.57vh;
+    align-items: center;
+}
+
+
+#action_plan_title{
+    margin: auto;
+    font-size: 5.57vh
+}
+
+#btn_add_action{
+    color: black;
+    background: goldenrod;
+    align-self: center;
+    width: 5.57vh;
+    height: 5.57vh;;
+}
+
+.container_plan{
+    margin: 3.44vh;
+    padding: 3.44vh;
+    height: 38.20vh;
+    background: #A0D8D5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 1.32vh;
+    box-shadow: 0px 8px 7px;
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import Register from './register'
 import LogIn from './login';
-import './welcome.css'
+import '../../main.css'
 
 
 class Welcome extends Component {
@@ -11,18 +11,18 @@ class Welcome extends Component {
 
     render() {
         return (
-            <>
+            <div id="wrapper_welcome" >
                 <header>
-                    <p>Weclome to</p>
-                    <h1>UrbanShire</h1>
+                    {/* <p id="content_welcome">Weclome to</p> */}
+                    <h1 id="title">UrbanShire</h1>
                 </header>
-                <LogIn {...this.props} />
-                <div>
-                    <p>or</p>
-                    <Button color="primary" size="lg" block onClick={this.props.toggle}>Create an Account</Button>
+                <div id="container_account">
+                    <LogIn {...this.props} />
+                    <p id="mission_statement">Our mission at UrbanShire is to offer Nashvillians a soluton in reducing their carbon foot-print through innovation, imagination, and ingenuity.</p>
+                    <Button id="btn_register" color="primary" size="lg" block onClick={this.props.toggle}>Create an Account</Button>
+                    <Register id="item_register" {...this.props} />
                 </div>
-                <Register {...this.props} />
-            </>
+            </div>
         )
     }
 }

@@ -21,7 +21,7 @@ export default class Register extends Component {
 
     render() {
         return (
-            <Modal isOpen={this.props.modal} toggle={this.props.toggle} className={this.props.className}>
+            <Modal id="container_register" isOpen={this.props.modal} toggle={this.props.toggle} className={this.props.className}>
                 <ModalHeader toggle={this.props.toggle}>Create an Account</ModalHeader>
                 <ModalBody>
                     <Form className="register__form" onSubmit={this.submit}>
