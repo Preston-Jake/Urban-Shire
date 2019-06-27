@@ -12,7 +12,7 @@ export default class EditEmissions extends Component {
 
         return (
             <Modal isOpen={this.props.modal} toggle={this.props.toggle} className={this.props.className}>
-                <ModalHeader toggle={this.props.toggle}>Edit</ModalHeader>
+                <ModalHeader toggle={this.props.toggle} onClick={this.props.cancel}>Edit</ModalHeader>
                 <ModalBody>
                     <Form>
                         <h1>Emissions</h1>
@@ -130,7 +130,9 @@ export default class EditEmissions extends Component {
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary" onClick={() => { this.props.handleUpdate(); this.props.toggle(); }}>Submit</Button>{' '}
-                    <Button color="secondary" onClick={() => { this.props.toggle() }}>Cancel</Button>
+                    <Button color="secondary" onClick={() => {
+                        this.props.cancel(); this.props.toggle()
+                    }}>Cancel</Button>
                 </ModalFooter>
             </Modal>
         )
