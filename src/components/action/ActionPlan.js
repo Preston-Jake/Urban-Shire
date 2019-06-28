@@ -11,7 +11,7 @@ export default class ActionPlan extends Component {
             <section id="container_action_plan">
                 <div id="header_action_plan">
                     <h2 id="action_plan_title">Action Plan</h2>
-                    <Button id="btn_add_action" onClick={this.props.toggleActionPlanModal}>+</Button>
+                    <Button id="btn_add_action" onClick={() => { this.props.toggleActionPlanModal(); this.props.initUserPlan() }}>+</Button>
                 </div>
                 <UserPlans {...this.props} />
                 <ActionPlanModal {...this.props} toggleActionPlanModal={this.props.toggleActionPlanModal} />

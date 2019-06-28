@@ -15,6 +15,7 @@ export default class EmissionsProfile extends Component {
 
         return (
             <div id="wrapper_emissions">
+                <h1 id="title_carbon">Total Carbon Usage</h1>
                 <h1 id="title_emissions">{Math.round(totalE)}lbs CO<sub>2</sub></h1>
                 <ActionPlan {...this.props} />
             </div>

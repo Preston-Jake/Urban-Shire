@@ -8,11 +8,13 @@ import Emissions from './emissions/Emissions';
 import { dbCalls } from '../components/dbCalls/dbCalls'
 import { login } from './auth/userManager'
 import EmissionsProfile from './emissions/EmissionsProfile';
+import { register } from './auth/userManager';
 
 class AppView extends Component {
     state = {
         email: "",
         password: "",
+        username: "",
         numOfPeople: 1,
         naturalGas: 0,
         electricity: 0,
@@ -51,6 +53,23 @@ class AppView extends Component {
         this.toggle = this.toggle.bind(this);
         this.toggleActionPlanModal = this.toggleActionPlanModal.bind(this)
     }
+
+    submitRegister = () => {
+        let rUser = {}
+        rUser.userName = this.state.username
+        rUser.email = this.state.email
+        rUser.password = this.state.password
+        register(rUser)
+            .then(newUser => {
+                this.onRegister(newUser);
+                this.props.history.push("/emissions/form")
+            }).then(
+                dbCalls.getActionPlans().then(
+                    r => this.setState({ action_plans: r })
+                )
+            )
+    }
+
     handleSelect = (selected, i) => {
         const index = this.state.selected_plans.indexOf(selected.id);
         if (index < 0) {
@@ -115,6 +134,7 @@ class AppView extends Component {
                 this.setState(newState)
             })
     }
+
     handleComplete = (event, plan, index) => {
         event.preventDefault()
         const newPlan = plan
@@ -129,9 +149,19 @@ class AppView extends Component {
 
 
     handleCancel = (event, plan) => {
+        console.log(plan)
         const newPlan = plan;
         newPlan.isSelected = false;
-        this.setState(newPlan, () => { dbCalls.patchUserPlans(this.state.user_action_plans.id, this.state.user_action_plans) })
+        this.setState({}, () => {
+            dbCalls.patchUserPlans(this.state.user_action_plans.id, this.state.user_action_plans).then(dbCalls.getUserPlans(this.state.user.id)).then(
+                (plan) => {
+                    const newState = {};
+                    console.log(plan)
+                    newState.action_plans = plan.user_plans
+                    this.setState(newState)
+                }
+            )
+        })
     }
 
     handleFieldChange = (evt) => {
@@ -264,6 +294,8 @@ class AppView extends Component {
 
     handlePassword = (e) => { this.setState({ password: e.target.value }) }
 
+    handleUsername = (e) => { this.setState({ username: e.target.value }) }
+
     onRegister = (user) => { this.setState({ user: user }) }
 
     submit = () => {
@@ -304,6 +336,16 @@ class AppView extends Component {
             )
     }
 
+    initUserPlan = () => {
+        dbCalls.getUserPlans(this.state.user.id).then(
+            (plan) => {
+                const newState = {};
+                newState.user_action_plans = plan[0]
+                this.setState(newState)
+            }
+        )
+    }
+
     cancel = () => {
         dbCalls.getUserEmissions(this.state.user.id).then(
             (r) => {
@@ -315,6 +357,10 @@ class AppView extends Component {
                 this.setState(newState)
             }
         )
+    }
+
+    cancelAction = () => {
+
     }
 
     componentDidMount = () => {
@@ -357,7 +403,8 @@ class AppView extends Component {
         return (
             <>
                 <Route exact path="/" render={(props) =>
-                    <Welcome {...props} {...this.state} toggle={this.toggle} modal={this.state.modal} {...this.props} onRegister={this.onRegister} onLogin={this.onLogin} handleEmail={this.handleEmail} handlePassword={this.handlePassword} submit={this.submit} />}
+                    <Welcome {...props} {...this.state} toggle={this.toggle} modal={this.state.modal} {...this.props} onRegister={this.onRegister} onLogin={this.onLogin} handleEmail={this.handleEmail} handlePassword={this.handlePassword} submit={this.submit} submitRegister={this.submitRegister}
+                        handleUsername={this.handleUsername} />}
                 />
                 <Route exact path="/emissions/form" render={(props) =>
 
@@ -369,7 +416,7 @@ class AppView extends Component {
                     <Emissions {...props} {...this.state} user={getUserFromLocalStorage()} toggle={this.toggle} modal={this.state.modal} handleFieldChange={this.handleFieldChange} handleUpdate={this.handleUpdate} toggleAluminum={this.toggleAluminum} togglePlastic={this.togglePlastic} toggleGlass={this.toggleGlass} toggleNewspaper={this.toggleNewspaper} toggleMagazines={this.toggleMagazines} toggleActionPlanModal={this.toggleActionPlanModal} handleSelect={this.handleSelect} handleCancel={this.handleCancel} handlePlansSubmit={this.handlePlansSubmit} handleComplete={this.handleComplete} cancel={this.cancel} />}
                 />
                 <Route exact path="/emissions" render={(props) =>
-                    <EmissionsProfile {...props} {...this.state} user={getUserFromLocalStorage()} toggle={this.toggle} modal={this.state.modal} handleFieldChange={this.handleFieldChange} handleUpdate={this.handleUpdate} toggleAluminum={this.toggleAluminum} togglePlastic={this.togglePlastic} toggleGlass={this.toggleGlass} toggleNewspaper={this.toggleNewspaper} toggleMagazines={this.toggleMagazines} toggleActionPlanModal={this.toggleActionPlanModal} handleSelect={this.handleSelect} handleCancel={this.handleCancel} handlePlansSubmit={this.handlePlansSubmit} handleComplete={this.handleComplete} cancel={this.cancel} />}
+                    <EmissionsProfile {...props} {...this.state} user={getUserFromLocalStorage()} toggle={this.toggle} modal={this.state.modal} handleFieldChange={this.handleFieldChange} handleUpdate={this.handleUpdate} toggleAluminum={this.toggleAluminum} togglePlastic={this.togglePlastic} toggleGlass={this.toggleGlass} toggleNewspaper={this.toggleNewspaper} toggleMagazines={this.toggleMagazines} toggleActionPlanModal={this.toggleActionPlanModal} handleSelect={this.handleSelect} handleCancel={this.handleCancel} handlePlansSubmit={this.handlePlansSubmit} handleComplete={this.handleComplete} cancel={this.cancel} initUserPlan={this.initUserPlan} />}
                 />
             </>
         )

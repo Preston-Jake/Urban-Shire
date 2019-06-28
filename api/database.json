@@ -1,0 +1,298 @@
+{
+  "users": [
+    {
+      "userName": "jake",
+      "email": "jake@internet.com",
+      "password": null,
+      "id": "WgO7h0eXePTm0FAjzKnpXwVor3g2"
+    },
+    {
+      "userName": "natbug2",
+      "email": "natbug22@internet.com",
+      "password": null,
+      "id": "bjDH6RQxl1ZsNugOTtG3zSmteOF3"
+    }
+  ],
+  "emission_forms": [
+    {
+      "numOfPeople": 2,
+      "naturalGas": 21,
+      "electricity": 145,
+      "fuelOil": 0,
+      "propane": 0,
+      "vehicle_0_mpg": 21,
+      "vehicle_0_miles": 200,
+      "vehicle_1_mpg": 10,
+      "vehicle_1_miles": 200,
+      "vehicle_2_mpg": 20,
+      "vehicle_2_miles": 200,
+      "vehicle_3_mpg": 13,
+      "vehicle_3_miles": 200,
+      "vehicle_4_mpg": 30,
+      "vehicle_4_miles": 200,
+      "aluminum": true,
+      "plastic": true,
+      "glass": true,
+      "newspaper": true,
+      "magazines": true,
+      "userId": "WgO7h0eXePTm0FAjzKnpXwVor3g2",
+      "id": 1
+    },
+    {
+      "numOfPeople": 5,
+      "naturalGas": 40,
+      "electricity": 150,
+      "fuelOil": 0,
+      "propane": 0,
+      "vehicle_0_mpg": 17,
+      "vehicle_0_miles": 100,
+      "vehicle_1_mpg": 0,
+      "vehicle_1_miles": 0,
+      "vehicle_2_mpg": 0,
+      "vehicle_2_miles": 0,
+      "vehicle_3_mpg": 0,
+      "vehicle_3_miles": 0,
+      "vehicle_4_mpg": 0,
+      "vehicle_4_miles": 0,
+      "aluminum": true,
+      "plastic": true,
+      "glass": true,
+      "newspaper": true,
+      "magazines": true,
+      "userId": "bjDH6RQxl1ZsNugOTtG3zSmteOF3",
+      "id": 2
+    }
+  ],
+  "user_action_plans": [
+    {
+      "userId": "WgO7h0eXePTm0FAjzKnpXwVor3g2",
+      "user_plans": [
+        {
+          "id": 1,
+          "name": "LED Lighting lvl 1",
+          "description": "Replace 5 old light bulbs with their LED equivalent.",
+          "reduce_emissions": 230,
+          "isComplete": true,
+          "isSelected": false
+        },
+        {
+          "id": 2,
+          "name": "LED Lighting lvl 2",
+          "description": "Replace 10 old light bulbs with their LED equivalent.",
+          "reduce_emissions": 460,
+          "isComplete": true,
+          "isSelected": false
+        },
+        {
+          "id": 3,
+          "name": "LED Lighting lvl 3",
+          "description": "Replace 25 old light bulbs with their LED equivalent.",
+          "reduce_emissions": 1150,
+          "isComplete": true,
+          "isSelected": false
+        },
+        {
+          "id": 4,
+          "name": "Upgrade Windows",
+          "description": "Make your home's heating and cooling more efficient with upgraded windows",
+          "reduce_emissions": 3000,
+          "isComplete": true,
+          "isSelected": false
+        },
+        {
+          "id": 5,
+          "name": "Go Vegan or Vegitarian",
+          "description": "NO MORE MEATS FOR YOU",
+          "reduce_emissions": 2000,
+          "isComplete": false,
+          "isSelected": false
+        },
+        {
+          "id": 6,
+          "name": "Meatless Monday",
+          "description": "No meat on monday",
+          "reduce_emissions": 400,
+          "isComplete": false,
+          "isSelected": false
+        },
+        {
+          "id": 7,
+          "name": "Improve Fuel Economy lvl 1",
+          "description": "Improve your fuel economy 5MPG",
+          "reduce_emissions": 2000,
+          "isComplete": false,
+          "isSelected": false
+        },
+        {
+          "id": 8,
+          "name": "Improve Fuel Economy lvl 2",
+          "description": "Improve your fuel economy 10MPG",
+          "reduce_emissions": 4000,
+          "isComplete": false,
+          "isSelected": false
+        },
+        {
+          "id": 9,
+          "name": "Improve Fuel Economy lvl 3",
+          "description": "Go electric! Replace one vehicle with an electic car.",
+          "reduce_emissions": 11000,
+          "isComplete": true,
+          "isSelected": false
+        }
+      ],
+      "id": 1
+    },
+    {
+      "userId": "bjDH6RQxl1ZsNugOTtG3zSmteOF3",
+      "user_plans": [
+        {
+          "id": 1,
+          "name": "LED Lighting lvl 1",
+          "description": "Replace 5 old light bulbs with their LED equivalent.",
+          "reduce_emissions": 230,
+          "isComplete": true,
+          "isSelected": false
+        },
+        {
+          "id": 2,
+          "name": "LED Lighting lvl 2",
+          "description": "Replace 10 old light bulbs with their LED equivalent.",
+          "reduce_emissions": 460,
+          "isComplete": false,
+          "isSelected": false
+        },
+        {
+          "id": 3,
+          "name": "LED Lighting lvl 3",
+          "description": "Replace 25 old light bulbs with their LED equivalent.",
+          "reduce_emissions": 1150,
+          "isComplete": false,
+          "isSelected": false
+        },
+        {
+          "id": 4,
+          "name": "Upgrade Windows",
+          "description": "Make your home's heating and cooling more efficient with upgraded windows",
+          "reduce_emissions": 3000,
+          "isComplete": false,
+          "isSelected": false
+        },
+        {
+          "id": 5,
+          "name": "Go Vegan or Vegitarian",
+          "description": "NO MORE MEATS FOR YOU",
+          "reduce_emissions": 2000,
+          "isComplete": true,
+          "isSelected": false
+        },
+        {
+          "id": 6,
+          "name": "Meatless Monday",
+          "description": "No meat on monday",
+          "reduce_emissions": 400,
+          "isComplete": true,
+          "isSelected": false
+        },
+        {
+          "id": 7,
+          "name": "Improve Fuel Economy lvl 1",
+          "description": "Improve your fuel economy 5MPG",
+          "reduce_emissions": 2000,
+          "isComplete": true,
+          "isSelected": false
+        },
+        {
+          "id": 8,
+          "name": "Improve Fuel Economy lvl 2",
+          "description": "Improve your fuel economy 10MPG",
+          "reduce_emissions": 4000,
+          "isComplete": true,
+          "isSelected": false
+        },
+        {
+          "id": 9,
+          "name": "Improve Fuel Economy lvl 3",
+          "description": "Go electric! Replace one vehicle with an electic car.",
+          "reduce_emissions": 11000,
+          "isComplete": true,
+          "isSelected": false
+        }
+      ],
+      "id": 2
+    }
+  ],
+  "action_plans": [
+    {
+      "id": 1,
+      "name": "LED Lighting lvl 1",
+      "description": "Replace 5 old light bulbs with their LED equivalent.",
+      "reduce_emissions": 230,
+      "isComplete": false,
+      "isSelected": false
+    },
+    {
+      "id": 2,
+      "name": "LED Lighting lvl 2",
+      "description": "Replace 10 old light bulbs with their LED equivalent.",
+      "reduce_emissions": 460,
+      "isComplete": false,
+      "isSelected": false
+    },
+    {
+      "id": 3,
+      "name": "LED Lighting lvl 3",
+      "description": "Replace 25 old light bulbs with their LED equivalent.",
+      "reduce_emissions": 1150,
+      "isComplete": false,
+      "isSelected": false
+    },
+    {
+      "id": 4,
+      "name": "Upgrade Windows",
+      "description": "Make your home's heating and cooling more efficient with upgraded windows",
+      "reduce_emissions": 3000,
+      "isComplete": false,
+      "isSelected": false
+    },
+    {
+      "id": 5,
+      "name": "Go Vegan or Vegitarian",
+      "description": "NO MORE MEATS FOR YOU",
+      "reduce_emissions": 2000,
+      "isComplete": false,
+      "isSelected": false
+    },
+    {
+      "id": 6,
+      "name": "Meatless Monday",
+      "description": "No meat on monday",
+      "reduce_emissions": 400,
+      "isComplete": false,
+      "isSelected": false
+    },
+    {
+      "id": 7,
+      "name": "Improve Fuel Economy lvl 1",
+      "description": "Improve your fuel economy 5MPG",
+      "reduce_emissions": 2000,
+      "isComplete": false,
+      "isSelected": false
+    },
+    {
+      "id": 8,
+      "name": "Improve Fuel Economy lvl 2",
+      "description": "Improve your fuel economy 10MPG",
+      "reduce_emissions": 4000,
+      "isComplete": false,
+      "isSelected": false
+    },
+    {
+      "id": 9,
+      "name": "Improve Fuel Economy lvl 3",
+      "description": "Go electric! Replace one vehicle with an electic car.",
+      "reduce_emissions": 11000,
+      "isComplete": false,
+      "isSelected": false
+    }
+  ]
+}
