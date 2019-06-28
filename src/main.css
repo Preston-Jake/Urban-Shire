@@ -174,7 +174,7 @@ Header h1 {
 }
 
 .content_vechicle_title{
-    font-size: 3.44vh;
+    font-size: 2.13vh;
     margin: auto;
     
 }
@@ -182,7 +182,7 @@ Header h1 {
 .container_vehicle_info{
     margin: auto;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 .content_vehicle_info{
     margin: auto;
@@ -214,6 +214,10 @@ Header h1 {
     height: 100%;
     padding-bottom: 38.2vh;
     margin-top: 9.02vh;
+}
+
+#title_carbon{
+    text-align: center;
 }
 
 #title_emissions{

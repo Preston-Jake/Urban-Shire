@@ -134,6 +134,7 @@ class AppView extends Component {
                 this.setState(newState)
             })
     }
+
     handleComplete = (event, plan, index) => {
         event.preventDefault()
         const newPlan = plan
@@ -148,9 +149,19 @@ class AppView extends Component {
 
 
     handleCancel = (event, plan) => {
+        console.log(plan)
         const newPlan = plan;
         newPlan.isSelected = false;
-        this.setState(newPlan, () => { dbCalls.patchUserPlans(this.state.user_action_plans.id, this.state.user_action_plans) })
+        this.setState({}, () => {
+            dbCalls.patchUserPlans(this.state.user_action_plans.id, this.state.user_action_plans).then(dbCalls.getUserPlans(this.state.user.id)).then(
+                (plan) => {
+                    const newState = {};
+                    console.log(plan)
+                    newState.action_plans = plan.user_plans
+                    this.setState(newState)
+                }
+            )
+        })
     }
 
     handleFieldChange = (evt) => {

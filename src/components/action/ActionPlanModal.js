@@ -30,7 +30,7 @@ export default class ActionPlanModal extends Component {
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary" onClick={(e) => { this.props.handlePlansSubmit(e); this.props.toggleActionPlanModal() }}>Create Plan</Button>{' '}
-                    <Button color="secondary" onClick={this.props.toggleActionPlanModal}>Cancel</Button>
+                    <Button color="secondary" onClick={() => { this.props.toggleActionPlanModal() }}>Cancel</Button>
                 </ModalFooter>
             </Modal>
         )
