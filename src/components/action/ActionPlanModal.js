@@ -7,7 +7,7 @@ export default class ActionPlanModal extends Component {
     render() {
         // console.log(this.props)
         let card = this.props.action_plans.map((action, index) => {
-            if (action.isComplete === true) { return null } else {
+            if (action.isComplete === true) { return null } else if (action.isSelected === true) { return null } else {
                 return (
                     <Col key={action.id} sm="6">
                         <Card>

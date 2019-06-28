@@ -77,6 +77,7 @@ Header h1 {
     background-color: goldenrod;
     top: 0; /* Position the navbar at the top of the page */
     width: 100%;
+    z-index: 500
 }
 
 #nav_title{
@@ -92,7 +93,7 @@ Header h1 {
 #wrapper_profile{
     display: flex;
     flex-direction: column;
-    margin-top: 5.57vh;
+    margin-top: 9.02vh;
 }
 
 #title_emissions{
@@ -131,6 +132,7 @@ Header h1 {
     height: 9.02vh;
     font-size: 5.57vh;
     margin: auto;
+    padding: 1.32vh;
 }
 
 #total_home_emissions,
@@ -141,6 +143,7 @@ Header h1 {
     height: 5.57vh;
     font-size: 3.44vh;
     margin: auto;
+    padding: 1.32vh;
 }
 
 #content_home, 
@@ -158,6 +161,7 @@ Header h1 {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    padding: 1.32vh
 }
 
 .home_rsc{
@@ -193,6 +197,8 @@ Header h1 {
 #btn_edit{
     height: 3.44vh;
     padding: 0;
+    background: goldenrod;
+    color: black;
 }
 
 #action_plan_title{
@@ -207,7 +213,7 @@ Header h1 {
     flex-direction: column;
     height: 100%;
     padding-bottom: 38.2vh;
-    margin-top: 5.57vh;
+    margin-top: 9.02vh;
 }
 
 #title_emissions{
