@@ -13,12 +13,12 @@ import { register } from './auth/userManager';
 class AppView extends Component {
     state = {
         email: "",
+        fuelOil: 0,
         password: "",
         username: "",
         numOfPeople: 1,
         naturalGas: 0,
         electricity: 0,
-        fuelOil: 0,
         propane: 0,
         vehicle_0_mpg: 0,
         vehicle_0_miles: 0,
@@ -413,7 +413,26 @@ class AppView extends Component {
                 />
 
                 <Route exact path="/carbonprofile" render={(props) =>
-                    <Emissions {...props} {...this.state} user={getUserFromLocalStorage()} toggle={this.toggle} modal={this.state.modal} handleFieldChange={this.handleFieldChange} handleUpdate={this.handleUpdate} toggleAluminum={this.toggleAluminum} togglePlastic={this.togglePlastic} toggleGlass={this.toggleGlass} toggleNewspaper={this.toggleNewspaper} toggleMagazines={this.toggleMagazines} toggleActionPlanModal={this.toggleActionPlanModal} handleSelect={this.handleSelect} handleCancel={this.handleCancel} handlePlansSubmit={this.handlePlansSubmit} handleComplete={this.handleComplete} cancel={this.cancel} />}
+                    <Emissions
+                        {...props}
+                        {...this.state}
+                        cancel={this.cancel}
+                        handleCancel={this.handleCancel}
+                        handleComplete={this.handleComplete}
+                        handleFieldChange={this.handleFieldChange}
+                        handlePlansSubmit={this.handlePlansSubmit}
+                        handleSelect={this.handleSelect}
+                        handleUpdate={this.handleUpdate}
+                        toggleAluminum={this.toggleAluminum}
+                        togglePlastic={this.togglePlastic}
+                        toggleGlass={this.toggleGlass}
+                        toggleMagazines={this.toggleMagazines}
+                        toggleNewspaper={this.toggleNewspaper}
+                        toggleActionPlanModal={this.toggleActionPlanModal}
+                        modal={this.state.modal}
+                        toggle={this.toggle}
+                        user={getUserFromLocalStorage()}
+                    />}
                 />
                 <Route exact path="/emissions" render={(props) =>
                     <EmissionsProfile {...props} {...this.state} user={getUserFromLocalStorage()} toggle={this.toggle} modal={this.state.modal} handleFieldChange={this.handleFieldChange} handleUpdate={this.handleUpdate} toggleAluminum={this.toggleAluminum} togglePlastic={this.togglePlastic} toggleGlass={this.toggleGlass} toggleNewspaper={this.toggleNewspaper} toggleMagazines={this.toggleMagazines} toggleActionPlanModal={this.toggleActionPlanModal} handleSelect={this.handleSelect} handleCancel={this.handleCancel} handlePlansSubmit={this.handlePlansSubmit} handleComplete={this.handleComplete} cancel={this.cancel} initUserPlan={this.initUserPlan} />}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
 import { CustomInput } from 'reactstrap';
-
+import VehiclesForm from "./VehiclesForm"
 
 export default class EmissionsForm extends Component {
 
@@ -126,6 +126,9 @@ export default class EmissionsForm extends Component {
                     </div>
                 </FormGroup>
                 <Button color="primary" type="button" size="lg" block onClick={(e) => this.props.handleSubmit(e)}>Submit</Button>
+                <div>
+                    <VehiclesForm />
+                </div>
             </Form>
         )
     }

@@ -11,6 +11,18 @@
       "email": "natbug22@internet.com",
       "password": null,
       "id": "bjDH6RQxl1ZsNugOTtG3zSmteOF3"
+    },
+    {
+      "userName": "taylor",
+      "email": "taylor.preston@test.com",
+      "password": null,
+      "id": "EE5zRWKl64dePMi9zEfRXCaeNT63"
+    },
+    {
+      "userName": "usere",
+      "email": "user@email.com",
+      "password": null,
+      "id": "GVrcI3BOjrRrOYy6zgErXcYNCPc2"
     }
   ],
   "emission_forms": [
@@ -61,6 +73,30 @@
       "magazines": true,
       "userId": "bjDH6RQxl1ZsNugOTtG3zSmteOF3",
       "id": 2
+    },
+    {
+      "numOfPeople": 2,
+      "naturalGas": 0,
+      "electricity": 200,
+      "fuelOil": 300,
+      "propane": 50,
+      "vehicle_0_mpg": 14,
+      "vehicle_0_miles": 120,
+      "vehicle_1_mpg": 22,
+      "vehicle_1_miles": 120,
+      "vehicle_2_mpg": 20,
+      "vehicle_2_miles": 200,
+      "vehicle_3_mpg": 13,
+      "vehicle_3_miles": 200,
+      "vehicle_4_mpg": 30,
+      "vehicle_4_miles": 200,
+      "aluminum": false,
+      "plastic": false,
+      "glass": false,
+      "newspaper": false,
+      "magazines": false,
+      "userId": "EE5zRWKl64dePMi9zEfRXCaeNT63",
+      "id": 3
     }
   ],
   "user_action_plans": [
@@ -72,7 +108,7 @@
           "name": "LED Lighting lvl 1",
           "description": "Replace 5 old light bulbs with their LED equivalent.",
           "reduce_emissions": 230,
-          "isComplete": true,
+          "isComplete": false,
           "isSelected": false
         },
         {
@@ -88,16 +124,16 @@
           "name": "LED Lighting lvl 3",
           "description": "Replace 25 old light bulbs with their LED equivalent.",
           "reduce_emissions": 1150,
-          "isComplete": true,
-          "isSelected": false
+          "isComplete": false,
+          "isSelected": true
         },
         {
           "id": 4,
           "name": "Upgrade Windows",
           "description": "Make your home's heating and cooling more efficient with upgraded windows",
           "reduce_emissions": 3000,
-          "isComplete": true,
-          "isSelected": false
+          "isComplete": false,
+          "isSelected": true
         },
         {
           "id": 5,
@@ -105,7 +141,7 @@
           "description": "NO MORE MEATS FOR YOU",
           "reduce_emissions": 2000,
           "isComplete": false,
-          "isSelected": false
+          "isSelected": true
         },
         {
           "id": 6,
@@ -136,7 +172,7 @@
           "name": "Improve Fuel Economy lvl 3",
           "description": "Go electric! Replace one vehicle with an electic car.",
           "reduce_emissions": 11000,
-          "isComplete": true,
+          "isComplete": false,
           "isSelected": false
         }
       ],
@@ -219,6 +255,16 @@
         }
       ],
       "id": 2
+    },
+    {
+      "userId": "EE5zRWKl64dePMi9zEfRXCaeNT63",
+      "user_plans": [],
+      "id": 3
+    },
+    {
+      "userId": "GVrcI3BOjrRrOYy6zgErXcYNCPc2",
+      "user_plans": [],
+      "id": 4
     }
   ],
   "action_plans": [
