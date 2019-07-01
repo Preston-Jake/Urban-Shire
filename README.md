@@ -63,11 +63,14 @@ Stretch Goals
 * NAV
 
 Mockup:
+
 ![Image from iOS (3)](https://user-images.githubusercontent.com/39278598/59221386-bfbc9400-8b8c-11e9-955b-0a4a97175e40.jpg)
 
 Database: 
+
 <img width="556" alt="Screen Shot 2019-06-10 at 11 44 07 AM" src="https://user-images.githubusercontent.com/39278598/60445934-e39c5400-9be5-11e9-9273-75bc9158bcf8.png">
 
 Completion:
+
 <img width="364" alt="Screen Shot 2019-07-01 at 9 53 43 AM" src="https://user-images.githubusercontent.com/39278598/60446190-789f4d00-9be6-11e9-863c-d3288f82deb0.png">
 
