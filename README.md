@@ -1,10 +1,13 @@
 # Urban-Shire
 Install:
+
 npm install
+
 json-server --watch database.json --port 8088
+
 npm start
 
-Description: UrbanShire is an application that shows user their net anuall C02 emissions and offers solutions reduce their carbon footprint. 
+Description: UrbanShire is an application that shows users their net anuall C02 emissions and offers solutions reduce their carbon footprint. 
 
 Plan:
 UrbanShire (MVP)
