@@ -74,3 +74,4 @@ Completion:
 
 <img width="364" alt="Screen Shot 2019-07-01 at 9 53 43 AM" src="https://user-images.githubusercontent.com/39278598/60446190-789f4d00-9be6-11e9-863c-d3288f82deb0.png">
 
+<img width="368" alt="Screen Shot 2019-07-01 at 10 05 17 AM" src="https://user-images.githubusercontent.com/39278598/60446804-c5375800-9be7-11e9-9b36-c2d5443832d5.png">
