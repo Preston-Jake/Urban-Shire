@@ -10,6 +10,7 @@ import Vehicle4 from './Vehicle4';
 import Vehicle5 from './Vehicle5';
 import Waste from './Waste';
 import '../../main.css'
+import FormikEmissions from './FormikEmissions';
 
 
 
@@ -17,7 +18,7 @@ import '../../main.css'
 export default class Emissions extends Component {
     render() {
         return (
-            <article id="wrapper_profile">
+            <article id="wrapper_profile" >
                 <section id="container_home">
                     <div id="header_home">
                         <h2 id="title_home">Home</h2>
